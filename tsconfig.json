@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "target": "es6",
+    "module": "ESNext",
+    "watch": true,
+    "rootDir": "src",
+    "outDir": "./dist/"
+  },
+  "exclude": ["src/spec.ts"]
+}
