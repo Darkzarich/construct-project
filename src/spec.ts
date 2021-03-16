@@ -1,3 +1,4 @@
+export type ISiteBlocks = (ISiteBlockText | ISiteBlockColumn)[]
 export interface ISiteBlockText {
   type: 'title' | 'text';
   value: string;
@@ -5,9 +6,5 @@ export interface ISiteBlockText {
 
 export interface ISiteBlockColumn {
     type: 'column';
-    value: ISiteBlockColumnItem[]
-}
-
-export interface ISiteBlockColumnItem {
-    value: string;
+    value: string[]
 }
