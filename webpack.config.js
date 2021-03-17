@@ -30,6 +30,8 @@ module.exports = {
     contentBase: path.join(__dirname, "public"),
     inline: true,
     host: "localhost",
+    watchContentBase: true,
+    open: true,
     port: 8080,
   },
 };
