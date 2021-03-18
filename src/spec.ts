@@ -1,7 +1,6 @@
 export type ISiteBlocks = (ISiteBlockText | ISiteBlockColumn | ISiteBlockImage)[]
-export interface ISiteBlockText {
-  type: 'title' | 'text';
-  value: string;
+
+interface ISiteBlockTextOptions {
   options?: {
     tag?: string;
     styles?: {
@@ -9,19 +8,25 @@ export interface ISiteBlockText {
     };
   }
 }
+export interface ISiteBlockText extends ISiteBlockTextOptions{
+  type: 'title' | 'text';
+  value: string;
+}
+export interface ISiteBlockColumn extends ISiteBlockTextOptions {
+  type: 'column';
+  value: string[]
+}
 
 export interface ISiteBlockImage {
   type: 'image';
   src: string;
-}
-
-export interface ISiteBlockColumn {
-    type: 'column';
-    value: string[]
-    options?: {
-      tag?: string;
-      styles?: {
-        [key: string]: string
-      };
-    }
+  options?: {
+    styles?: {
+      [key: string]: string
+    };
+    imageStyles?: {
+      [key: string]: string
+    };
+    alt?: string;
+  }
 }
