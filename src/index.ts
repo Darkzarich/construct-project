@@ -7,7 +7,21 @@ import { template } from './templates';
 const initialBlocks: ISiteBlocks = [
   {
     type: 'title',
-    value: 'Hello World',
+    value: 'Some very important title',
+    options: {
+      tag: 'h2'
+    }
+  },
+  {
+    type: 'title',
+    value: '...this is important too but less',
+    options: {
+      tag: 'h4',
+      styles: {
+        'font-style': 'italic',
+        color: '#b0bec5'
+      }
+    }
   },
   {
     type: 'text',

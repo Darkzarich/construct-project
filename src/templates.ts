@@ -1,9 +1,10 @@
 import { ISiteBlockText, ISiteBlockColumn, ISiteBlockImage } from './spec';
 
-import { row, col } from './utils';
+import { row, col, toCSS } from './utils';
 
 const title = (block: ISiteBlockText) => {
-  return row(col(`<h1>${block.value}</h1>`));
+  const {tag = 'h1', styles} = block.options;
+  return row(col(`<${tag}>${block.value}</${tag}>`), toCSS(styles));
 };
 
 const text = (block: ISiteBlockText) => {
