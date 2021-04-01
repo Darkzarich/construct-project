@@ -1,32 +1,25 @@
-export type ISiteBlocks = (ISiteBlockText | ISiteBlockColumn | ISiteBlockImage)[]
+import {TitleBlock, ColumnBlock, ImageBlock, TextBlock} from './classes/Block'
 
-interface ISiteBlockTextOptions {
-  options?: {
-    tag?: string;
-    styles?: {
-      [key: string]: string
-    };
-  }
-}
-export interface ISiteBlockText extends ISiteBlockTextOptions{
-  type: 'title' | 'text';
-  value: string;
-}
-export interface ISiteBlockColumn extends ISiteBlockTextOptions {
-  type: 'column';
-  value: string[]
+export type ISiteBlocks = (
+  | TitleBlock
+  | TextBlock
+  | ColumnBlock
+  | ImageBlock
+)[];
+
+export interface ISiteBlockTextOptions {
+  tag?: string;
+  styles?: {
+    [key: string]: string;
+  };
 }
 
-export interface ISiteBlockImage {
-  type: 'image';
-  src: string;
-  options?: {
-    styles?: {
-      [key: string]: string
-    };
-    imageStyles?: {
-      [key: string]: string
-    };
-    alt?: string;
-  }
+export interface ISiteBlockImageOptions {
+  styles?: {
+    [key: string]: string;
+  };
+  imageStyles?: {
+    [key: string]: string;
+  };
+  alt?: string;
 }
