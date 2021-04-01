@@ -1,9 +1,8 @@
 import '../src/styles/main.css';
+import { Site } from './classes/Site';
 
 import { initialBlocks } from './model';
 
-const site = document.querySelector('#site');
+const site = new Site('#site');
 
-for (const block of initialBlocks) {
-  site.insertAdjacentHTML('beforeend', block.toHTML());
-}
+site.render(initialBlocks);
