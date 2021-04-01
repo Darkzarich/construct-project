@@ -14,7 +14,7 @@ abstract class Block {
     this.options = options;
   }
 
-  public toHTML () {
+  public toHTML() {
     throw Error('Method toHTML is not implemented');
   }
 }
@@ -40,7 +40,8 @@ export class TextBlock extends Block {
   }
 
   public toHTML() {
-    return row(col(`<p>${this.value}</p>`));
+    const { styles } = this.options || {};
+    return row(col(`<p>${this.value}</p>`), toCSS(styles));
   }
 }
 
