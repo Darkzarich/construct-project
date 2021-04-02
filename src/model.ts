@@ -23,7 +23,8 @@ export const initialBlocks: ISiteBlocks = [
     },
   }),
   new TextBlock(
-    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, ut?'),
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, ut?'
+  ),
   new ColumnBlock(
     [
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero neque voluptatem libero excepturi dignissimos, impedit consequuntur odio delectus adipisci sint architecto illo ex ipsam reiciendis dolore mollitia earum, minus ducimus.',
@@ -32,7 +33,7 @@ export const initialBlocks: ISiteBlocks = [
     ],
     {
       styles: {
-        background: 'linear-gradient(to top, #547683, #5e92c0);',
+        background: 'linear-gradient(to bottom, #547683, #5e92c0);',
         padding: '2rem',
         color: 'white',
       },
@@ -47,6 +48,7 @@ export const initialBlocks: ISiteBlocks = [
       },
       alt: 'picture',
       styles: {
+        background: '#5e90bb',
         'justify-content': 'center',
         display: 'flex',
         padding: '2rem',
