@@ -82,7 +82,7 @@ export default class SidebarBlocks {
 
   private static _createSidebarForm(type: string, inputFields: string): string {
     return `
-    <form name="${type}" class="border-bottom mb-2 pb-2">
+    <form name="${type}" class="border-bottom mb-3 pb-2">
       <h5>${type}</h5>
       ${inputFields}
       <button type="submit" class="btn btn-primary btn-sm w-100">
