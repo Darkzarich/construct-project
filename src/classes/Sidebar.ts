@@ -1,5 +1,5 @@
-import { createSidebarBlock } from '../utils';
-import { TextBlock, TitleBlock } from './Block';
+import { ImageBlock, TextBlock, TitleBlock } from './Block';
+import SidebarBlocks from './SidebarBlocks'
 
 export class Sidebar {
   $el: any;
@@ -13,11 +13,18 @@ export class Sidebar {
 
   private init(): void {
     this.$el.insertAdjacentHTML('afterbegin', this.template);
-    this.$el.addEventListener('submit', this.addSiteBlock.bind(this));
+    this.$el.addEventListener('submit', (e: any) => {
+      this.addSiteBlock(e);
+    });
   }
 
   get template(): string {
-    return [createSidebarBlock('title'), createSidebarBlock('text')].join('');
+    return [
+      SidebarBlocks.createTitleSidebarBlock(),
+      SidebarBlocks.createTextSidebarBlock(),
+      SidebarBlocks.createImageSidebarBlock(),
+      SidebarBlocks.createColumnSidebarBlock()
+    ].join('');
   }
 
   private addSiteBlock(event: any) {
@@ -26,21 +33,31 @@ export class Sidebar {
     const blockMapping = {
       title: TitleBlock,
       text: TextBlock,
+      image: ImageBlock,
     };
 
     if (!blockMapping[event.target.name]) {
       throw Error('Sidebar: Unknown block type');
     }
 
-    const newBlock = new blockMapping[event.target.name](
-      event.target.value.value,
-      {
-        styles: event.target.style.value,
-      }
-    );
+    const blockData = {
+      value: event.target.value.value,
+      options: {}
+    }
 
-    event.target.value.value = '';
-    event.target.style.value = '';
+    const optionsForm = new FormData(event.target);
+
+    for (const pair of optionsForm.entries()) {
+      if (pair[0] !== 'value') {
+        blockData.options[pair[0]] = pair[1]
+      }
+      event.target[pair[0]].value = '';
+    }
+
+    const newBlock = new blockMapping[event.target.name](
+      blockData.value,
+      blockData.options
+    );
 
     this.updateCallback(newBlock);
   }
