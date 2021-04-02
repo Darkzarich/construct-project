@@ -1,4 +1,4 @@
-import { ImageBlock, TextBlock, TitleBlock } from './Block';
+import { ColumnBlock, ImageBlock, TextBlock, TitleBlock } from './Block';
 import SidebarBlocks from './SidebarBlocks'
 
 export class Sidebar {
@@ -34,6 +34,7 @@ export class Sidebar {
       title: TitleBlock,
       text: TextBlock,
       image: ImageBlock,
+      column: ColumnBlock
     };
 
     if (!blockMapping[event.target.name]) {
@@ -41,7 +42,7 @@ export class Sidebar {
     }
 
     const blockData = {
-      value: event.target.value.value,
+      value: SidebarBlocks.extractInputValue(event),
       options: {}
     }
 

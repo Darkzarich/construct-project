@@ -35,10 +35,29 @@ export default class SidebarBlocks {
     return this._createSidebarForm(
       'column',
       [
-        this._createSidebarInput('value'),
+        this._createSidebarInput('col1'),
+        this._createSidebarInput('col2'),
+        this._createSidebarInput('col3'),
         this._createSidebarInput('styles'),
       ].join('')
     );
+  }
+
+  public static extractInputValue(event: any) {
+    if (event.target.value) {
+      return event.target.value.value;
+    }
+
+    const columns = [];
+    const elColumns = event.target.querySelectorAll('input[name^="col"]')
+
+    if (elColumns.length > 0) {
+      for (const col of elColumns) {
+        columns.push(col.value);
+      }
+    }
+
+    return columns;
   }
 
   private static _createSidebarInput(name: string) {
